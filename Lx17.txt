@@ -1,0 +1,111 @@
+﻿C＃企业级开发技术练习17答题卡
+
+班级：信管2班     
+姓名：凌胜鹏  
+学号：37
+
+*注：排除答案放置在序号下方。* /
+
+（一）
+使用系统；
+使用System.Dynamic;
+使用System.Collections.Generic;
+命名空间ConsoleApp17
+{
+班级计划
+{
+公共类人
+{
+静态void Main（string [] args）
+{
+动态书= new ExpandoObject（）;
+book.name =“ SQL”;
+book.price = 40.23m;
+IDictionary <string，object> bookDT = book;
+Console.WriteLine（$“书名：{bookDT [” name“]}”））;
+Console.WriteLine（$“价格：{bookDT [” price“]}”））;
+}
+}
+}
+}
+
+（二）
+使用系统；
+使用System.Dynamic;
+使用System.Collections.Generic;
+命名空间ConsoleApp17
+{
+Proqram类
+{
+公共类Sale：DynamicObject
+{
+public DateTime salesTime {get {return DateTime.Now; }}
+公共动态价格 组; }
+IDictionary <字符串，对象>其他=新字典<字符串，对象>（）;
+公共重写布尔TryGetMember（GetMemberBinder活页夹，出对象结果）
+{
+返回other.TryGetValue（binder.Name，超出结果）;
+}
+公共替代布尔TrySetMember（SetMemberBinder活页夹，对象值）
+{
+返回other.TryAdd（binder.Name，value）;
+}
+公共重写布尔TryInvoke（InvokeBinder装订器，对象[]参数，输出对象结果）
+{
+结果=（int）args [0] *价格；
+返回true；
+}
+}
+静态void Main（string [] args）
+{
+动态dv = new Sale（）;
+dv.price = 2999.5; dv.name =“ OPPO”; dv.n = 10;
+var amount = dv（dv.n）;
+Console.WriteLine（$“销售{dv.name}手机{dv.n}台，单价{dv.price}元，合计{amount}元”）；
+}
+}
+}
+
+（三）
+使用系统；
+命名空间ConsoleApp17
+{
+班级计划
+{
+公共类人
+{
+公共字符串名称{get; }
+公共字符串Sex {get; }
+公众人物（字符串名称，字符串性别）
+{
+名称=名称；性=性；
+}
+}
+公共课老师：人
+{
+公共教师（字符串名称，字符串性别）：基本（名称，性别）{}
+}
+公职人员：人
+{
+公共工作者（字符串名称，字符串性别）：base（名称，性别）{}
+}
+静态void Main（string [] args）
+{
+void新人<T>（字符串名称，字符串性别）
+{
+var type = typeof（T）;
+对象person = Activator.CreateInstance（类型，名称，性别）;
+Console.Write（$“ Recruiting {type.Name}：”）;
+foreach（type.GetProperties（）中的var p）
+{
+Console.Write（$“ {p.Name}：{p.GetValue（person）}，”）;
+}
+Console.WriteLine（）;
+}
+新人<老师>（“ zhang”，“ male”）; 新人<老师>（“ liu”，“女”）;
+招聘<Worker>（“ zhao”，“ male”）; 招聘<Worker>（“ wang”，“ female”）;
+}
+}
+}
+
+
